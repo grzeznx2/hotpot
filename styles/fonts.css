@@ -1,0 +1,7 @@
+@font-face {
+    font-family: 'boorsok';
+    src: url('/fonts/boorsok.ttf') format('truetype'), /* for modern browsers */
+         url('/fonts/boorsok.otf') format('opentype'); /* for older browsers */
+    font-weight: normal;
+    font-style: normal;
+  }
