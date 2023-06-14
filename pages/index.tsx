@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 import { useIsMounted } from "../hooks/useIsMounted";
 import Image from "next/image";
 import HotpotSVG from "../public/images/hotpot_text.svg";
-import Link from "next/link";
 import { db } from "../firebase/firebase";
 import {
   addDoc,
@@ -27,14 +26,19 @@ interface CurrentWallet {
 
 type FetchState = "NOT_LOADING" | "LOADING" | "ERROR";
 
+const titleStyles = {
+  fontFamily: "boorsok",
+  color: "#FF62D6",
+};
+
+const subtitleStyles = { fontFamily: "boorsok", color: "#620DED" };
+
 const Home: NextPage = () => {
   const mounted = useIsMounted();
   const { address } = useAccount();
-  const [following, setIsFollowing] = useState(false);
   const [currentWalletFetchState, setCurrentWalletFetchState] =
     useState<FetchState>("NOT_LOADING");
   const [displayLastPage, setDisplayLastPage] = useState(false);
-  const [addressSaved, setAddressSaved] = useState(false);
   const [currentWallet, setCurrentWallet] = useState<CurrentWallet | null>(
     null
   );
@@ -82,8 +86,6 @@ const Home: NextPage = () => {
       } catch (error) {
         setCurrentWalletFetchState("ERROR");
       }
-
-      setAddressSaved(true);
     }
 
     if (address) {
@@ -104,8 +106,6 @@ const Home: NextPage = () => {
 
       setCurrentWallet({ ...currentWallet, isFollowing: true });
     } catch (error) {}
-
-    setIsFollowing(true);
   }
 
   function handleDisplayLastPage() {
@@ -113,6 +113,10 @@ const Home: NextPage = () => {
   }
 
   if (!mounted) return <></>;
+
+  const shouldRenderSecondView =
+    currentWallet && !alreadyFollower && !displayLastPage;
+  const shouldRenderThirdView = currentWallet?.isFollowing && displayLastPage;
 
   return (
     <div className="px-8 md:px-16 overflow-hidden">
@@ -128,13 +132,12 @@ const Home: NextPage = () => {
           width={55}
           height={55}
         />
-        <ConnectButton />
         {address && (
           <div className="w-walletInfo h-walletInfo bg-purple1 border-2 border-white rounded-full flex items-center pl-4">
             <div className="w-17 h-17 rounded-full mr-4">
               <Image
                 src={"/images/Avatar.png"}
-                alt="logo"
+                alt="Avatar"
                 width={37}
                 height={37}
               />
@@ -151,7 +154,7 @@ const Home: NextPage = () => {
             <div className="absolute bottom-20 -left-10 sm:bottom-48 sm:left-20 fadeIn scale-50 md:scale-75 lg:scale-100:bottom-48 sm:left-20 fadeIn scale-50 md:scale-75 lg:scale-100">
               <Image
                 src={"/images/egg.png"}
-                alt="logo"
+                alt="egg"
                 width={189}
                 height={148}
               />
@@ -160,7 +163,7 @@ const Home: NextPage = () => {
               <div className="upDown">
                 <Image
                   src={"/images/golden_ticket_rotated.png"}
-                  alt="logo"
+                  alt="golden_ticket_rotated"
                   width={233}
                   height={193}
                 />
@@ -169,7 +172,7 @@ const Home: NextPage = () => {
             <div className="absolute bottom-20 left-80 sm:bottom-28 sm:left-2/3 fadeIn scale-50 md:scale-75 lg:scale-100">
               <Image
                 src={"/images/mushroom.png"}
-                alt="logo"
+                alt="mushroom"
                 width={107}
                 height={113}
               />
@@ -177,7 +180,7 @@ const Home: NextPage = () => {
             <div className="absolute bottom-1/4 -right-8 md:right-20 fadeIn scale-50 md:scale-75 lg:scale-100">
               <Image
                 src={"/images/naruto.png"}
-                alt="logo"
+                alt="naruto"
                 width={113}
                 height={96}
               />
@@ -185,89 +188,9 @@ const Home: NextPage = () => {
             <div className="absolute -top-28 -right-64 sm:top-0 sm:-right-48 lg:-right-32 fadeIn scale-50 md:scale-75 xl:scale-100">
               <Image
                 src={"/images/pink_meat.png"}
-                alt="logo"
+                alt="pink_meat"
                 width={353}
                 height={284}
-              />
-            </div>
-          </>
-        )}
-        {currentWallet && !alreadyFollower && !displayLastPage && (
-          <>
-            <div className="absolute bottom-40 -left-10 sm:bottom-48 sm:left-20 fadeIn scale-50 md:scale-75 lg:scale-100">
-              <Image
-                src={"/images/egg.png"}
-                alt="logo"
-                width={189}
-                height={148}
-              />
-            </div>
-            <div className="absolute top-44 left-1/2 -translate-x-1/2 fadeIn">
-              <Image
-                src={"/images/golden_ticket.png"}
-                alt="logo"
-                width={229}
-                height={239}
-              />
-            </div>
-            <div className="absolute bottom-10 left-1/4 fadeIn scale-50 md:scale-75 lg:scale-100">
-              <Image
-                src={"/images/mushroom.png"}
-                alt="logo"
-                width={107}
-                height={113}
-              />
-            </div>
-            <div className="absolute top-60 -right-8 lg:right-8 fadeIn scale-50 md:scale-75 lg:scale-100">
-              <Image
-                src={"/images/naruto.png"}
-                alt="logo"
-                width={113}
-                height={96}
-              />
-            </div>
-            <div className="absolute bottom-28 right-0 sm:bottom-28 sm:left-2/3 rotate-12 scale-50 md:scale-75 lg:scale-100 fadeIn">
-              <Image
-                src={"/images/cabbage.png"}
-                alt="logo"
-                width={120}
-                height={145}
-              />
-            </div>
-          </>
-        )}
-        {currentWallet?.isFollowing && displayLastPage && (
-          <>
-            <div className="absolute bottom-48 -left-10 lg:bottom-1/4 lg:left-40 -rotate-12 fadeIn scale-50 md:scale-75 lg:scale-100">
-              <Image
-                src={"/images/bokchoy.png"}
-                alt="logo"
-                width={108}
-                height={158}
-              />
-            </div>
-            <div className="absolute top-52 left-1/2 -translate-x-1/2 rotate-180 fadeIn scale-50 md:scale-75 lg:scale-100">
-              <Image
-                src={"/images/shrimp.png"}
-                alt="logo"
-                width={179}
-                height={189}
-              />
-            </div>
-            <div className="absolute top-80 -right-8 lg:right-8 fadeIn scale-50 md:scale-75 lg:scale-100">
-              <Image
-                src={"/images/naruto.png"}
-                alt="logo"
-                width={113}
-                height={96}
-              />
-            </div>
-            <div className="absolute bottom-40 right-8 md:bottom-36 md:right-40 lg:bottom-48 lg:right-1/4  rotate-12 fadeIn scale-50 md:scale-75 lg:scale-100">
-              <Image
-                src={"/images/corn.png"}
-                alt="logo"
-                width={105}
-                height={103}
               />
             </div>
           </>
@@ -286,19 +209,60 @@ const Home: NextPage = () => {
             </div>
           </div>
         )}
-        {currentWallet && !alreadyFollower && !displayLastPage && (
+        {shouldRenderSecondView && (
+          <>
+            <div className="absolute bottom-40 -left-10 sm:bottom-48 sm:left-20 fadeIn scale-50 md:scale-75 lg:scale-100">
+              <Image
+                src={"/images/egg.png"}
+                alt="egg"
+                width={189}
+                height={148}
+              />
+            </div>
+            <div className="absolute top-44 left-1/2 -translate-x-1/2 fadeIn">
+              <Image
+                src={"/images/golden_ticket.png"}
+                alt="golden_ticket"
+                width={229}
+                height={239}
+              />
+            </div>
+            <div className="absolute bottom-10 left-1/4 fadeIn scale-50 md:scale-75 lg:scale-100">
+              <Image
+                src={"/images/mushroom.png"}
+                alt="mushroom"
+                width={107}
+                height={113}
+              />
+            </div>
+            <div className="absolute top-60 -right-8 lg:right-8 fadeIn scale-50 md:scale-75 lg:scale-100">
+              <Image
+                src={"/images/naruto.png"}
+                alt="naruto"
+                width={113}
+                height={96}
+              />
+            </div>
+            <div className="absolute bottom-28 right-0 sm:bottom-28 sm:left-2/3 rotate-12 scale-50 md:scale-75 lg:scale-100 fadeIn">
+              <Image
+                src={"/images/cabbage.png"}
+                alt="cabbage"
+                width={120}
+                height={145}
+              />
+            </div>
+          </>
+        )}
+        {shouldRenderSecondView && (
           <div className="flex flex-col items-center">
             <h2
               className="text-5xl md:text-8xl lg:text-9xl mb-8 md:mb-16 text-center"
-              style={{
-                fontFamily: "boorsok",
-                color: "#FF62D6",
-              }}
+              style={titleStyles}
             >
               One Last Ingredient...
             </h2>
             <p
-              style={{ fontFamily: "boorsok", color: "#620DED" }}
+              style={subtitleStyles}
               className="text-3xl md:text-5xl mb-8 md:mb-16 w-3/4 text-center"
             >
               Follow us on twitter to secure your reward
@@ -326,19 +290,53 @@ const Home: NextPage = () => {
             </div>
           </div>
         )}
-        {currentWallet?.isFollowing && displayLastPage && (
+        {shouldRenderThirdView && (
+          <>
+            <div className="absolute bottom-48 -left-10 lg:bottom-1/4 lg:left-40 -rotate-12 fadeIn scale-50 md:scale-75 lg:scale-100">
+              <Image
+                src={"/images/bokchoy.png"}
+                alt="bokchoy"
+                width={108}
+                height={158}
+              />
+            </div>
+            <div className="absolute top-52 left-1/2 -translate-x-1/2 rotate-180 fadeIn scale-50 md:scale-75 lg:scale-100">
+              <Image
+                src={"/images/shrimp.png"}
+                alt="shrimp"
+                width={179}
+                height={189}
+              />
+            </div>
+            <div className="absolute top-80 -right-8 lg:right-8 fadeIn scale-50 md:scale-75 lg:scale-100">
+              <Image
+                src={"/images/naruto.png"}
+                alt="naruto"
+                width={113}
+                height={96}
+              />
+            </div>
+            <div className="absolute bottom-40 right-8 md:bottom-36 md:right-40 lg:bottom-48 lg:right-1/4  rotate-12 fadeIn scale-50 md:scale-75 lg:scale-100">
+              <Image
+                src={"/images/corn.png"}
+                alt="corn"
+                width={105}
+                height={103}
+              />
+            </div>
+          </>
+        )}
+
+        {shouldRenderThirdView && (
           <div className="flex flex-col items-center">
             <h2
-              style={{
-                fontFamily: "boorsok",
-                color: "#FF62D6",
-              }}
+              style={titleStyles}
               className="text-5xl md:text-8xl lg:text-9xl mb-8 md:mb-16 text-center"
             >
               Welcome to the club!
             </h2>
             <p
-              style={{ fontFamily: "boorsok", color: "#620DED" }}
+              style={subtitleStyles}
               className="text-3xl md:text-5xl mb-8 md:mb-16 w-3/4 text-center"
             >
               A special surprise awaits you at launch. Enjoy your head start.
