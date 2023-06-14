@@ -49,6 +49,8 @@ div.xx>div {
   transform: scale(1) !important;
 }
 
+
+
 .btn {
   color: white;
   width: 38rem !important;
@@ -61,6 +63,13 @@ div.xx>div {
 
 .btn:hover {
   background-color: #FF9EE6 !important;
+}
+
+@media (max-width: 600px) {
+  .xx button, .btn {
+    width: 26rem !important;
+    height: 5.2rem !important;
+  }
 }
 
 @keyframes fadeIn {
@@ -96,3 +105,18 @@ div.xx>div {
 .upDown {
   animation: upDown 2s ease-in-out infinite;
 }
+
+.spinner {
+  border: 16px solid #FF62D6;  
+  border-top: 16px solid #FF9EE6;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
