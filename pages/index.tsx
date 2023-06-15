@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { useIsMounted } from "../hooks/useIsMounted";
 import Image from "next/image";
 import HotpotSVG from "../public/images/hotpot_text.svg";
+import TwitterSVG from "../public/images/twitter_svg.svg";
 import { db } from "../firebase/firebase";
 import {
   addDoc,
@@ -151,7 +152,7 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         {!address && (
           <>
-            <div className="absolute bottom-20 -left-10 sm:bottom-48 sm:left-20 fadeIn scale-50 md:scale-75 lg:scale-100:bottom-48 sm:left-20 fadeIn scale-50 md:scale-75 lg:scale-100">
+            <div className="egg1 fadeIn">
               <Image
                 src={"/images/egg.png"}
                 alt="egg"
@@ -159,8 +160,8 @@ const Home: NextPage = () => {
                 height={148}
               />
             </div>
-            <div className="absolute top-28 left-1 md:top-28 md:left-0 lg:top-28 lg:left-80 fadeIn scale-50 md:scale-75 lg:scale-100">
-              <div className="upDown">
+            <div className="ticket1 fadeIn">
+              <div className="rotateAnim">
                 <Image
                   src={"/images/golden_ticket_rotated.png"}
                   alt="golden_ticket_rotated"
@@ -169,7 +170,7 @@ const Home: NextPage = () => {
                 />
               </div>
             </div>
-            <div className="absolute bottom-20 left-80 sm:bottom-28 sm:left-2/3 fadeIn scale-50 md:scale-75 lg:scale-100">
+            <div className="mushroom1 fadeIn">
               <Image
                 src={"/images/mushroom.png"}
                 alt="mushroom"
@@ -177,7 +178,7 @@ const Home: NextPage = () => {
                 height={113}
               />
             </div>
-            <div className="absolute bottom-1/4 -right-8 md:right-20 fadeIn scale-50 md:scale-75 lg:scale-100">
+            <div className="naruto1 fadeIn">
               <Image
                 src={"/images/naruto.png"}
                 alt="naruto"
@@ -185,7 +186,7 @@ const Home: NextPage = () => {
                 height={96}
               />
             </div>
-            <div className="absolute -top-28 -right-64 sm:top-0 sm:-right-48 lg:-right-32 fadeIn scale-50 md:scale-75 xl:scale-100">
+            <div className="meat1 fadeIn">
               <Image
                 src={"/images/pink_meat.png"}
                 alt="pink_meat"
@@ -211,7 +212,7 @@ const Home: NextPage = () => {
         )}
         {shouldRenderSecondView && (
           <>
-            <div className="absolute bottom-40 -left-10 sm:bottom-48 sm:left-20 fadeIn scale-50 md:scale-75 lg:scale-100">
+            <div className="fadeIn egg1 egg3">
               <Image
                 src={"/images/egg.png"}
                 alt="egg"
@@ -219,7 +220,7 @@ const Home: NextPage = () => {
                 height={148}
               />
             </div>
-            <div className="absolute top-44 left-1/2 -translate-x-1/2 fadeIn">
+            <div className="fadeIn ticket2">
               <Image
                 src={"/images/golden_ticket.png"}
                 alt="golden_ticket"
@@ -227,15 +228,7 @@ const Home: NextPage = () => {
                 height={239}
               />
             </div>
-            <div className="absolute bottom-10 left-1/4 fadeIn scale-50 md:scale-75 lg:scale-100">
-              <Image
-                src={"/images/mushroom.png"}
-                alt="mushroom"
-                width={107}
-                height={113}
-              />
-            </div>
-            <div className="absolute top-60 -right-8 lg:right-8 fadeIn scale-50 md:scale-75 lg:scale-100">
+            <div className="fadeIn naruto3">
               <Image
                 src={"/images/naruto.png"}
                 alt="naruto"
@@ -243,7 +236,7 @@ const Home: NextPage = () => {
                 height={96}
               />
             </div>
-            <div className="absolute bottom-28 right-0 sm:bottom-28 sm:left-2/3 rotate-12 scale-50 md:scale-75 lg:scale-100 fadeIn">
+            <div className="cabbage fadeIn">
               <Image
                 src={"/images/cabbage.png"}
                 alt="cabbage"
@@ -274,14 +267,15 @@ const Home: NextPage = () => {
                 rel="noopener noreferrer"
               >
                 <button
-                  className="w-mainButton h-walletInfo rounded-full text-white text-button font-bold bg-pink1 hover:bg-pink2"
+                  className="btn w-mainButton h-walletInfo rounded-full text-white text-button font-bold bg-pink1 hover:bg-pink2 flex items-center justify-center"
                   onClick={() => handleFollow()}
                 >
-                  Follow
+                  <Image src={TwitterSVG} alt="Twitter logo" />
+                  <span className="ml-2">Follow</span>
                 </button>
               </a>
               <button
-                className="w-mainButton h-walletInfo rounded-full text-purple1 text-button font-bold bg-white disabled:bg-gray-500 disabled:opacity-30 disabled:text-gray-900"
+                className="btn w-mainButton h-walletInfo rounded-full text-purple1 text-button font-bold bg-white disabled:bg-gray-500 disabled:opacity-30 disabled:text-gray-900"
                 disabled={!currentWallet.isFollowing}
                 onClick={() => handleDisplayLastPage()}
               >
@@ -292,7 +286,8 @@ const Home: NextPage = () => {
         )}
         {shouldRenderThirdView && (
           <>
-            <div className="absolute bottom-48 -left-10 lg:bottom-1/4 lg:left-40 -rotate-12 fadeIn scale-50 md:scale-75 lg:scale-100">
+            <div className="bokchoy3 fadeIn">
+              {/* <div className="absolute bottom-48 -left-10 lg:bottom-1/4 lg:left-40 -rotate-12 fadeIn scale-50 md:scale-75 lg:scale-100"> */}
               <Image
                 src={"/images/bokchoy.png"}
                 alt="bokchoy"
@@ -300,7 +295,8 @@ const Home: NextPage = () => {
                 height={158}
               />
             </div>
-            <div className="absolute top-52 left-1/2 -translate-x-1/2 rotate-180 fadeIn scale-50 md:scale-75 lg:scale-100">
+            <div className="fadeIn shrimp3">
+              {/* <div className="absolute top-52 left-1/2 -translate-x-1/2 rotate-180 fadeIn scale-50 md:scale-75 lg:scale-100"> */}
               <Image
                 src={"/images/shrimp.png"}
                 alt="shrimp"
@@ -308,7 +304,7 @@ const Home: NextPage = () => {
                 height={189}
               />
             </div>
-            <div className="absolute top-80 -right-8 lg:right-8 fadeIn scale-50 md:scale-75 lg:scale-100">
+            <div className="fadeIn naruto1">
               <Image
                 src={"/images/naruto.png"}
                 alt="naruto"
@@ -316,7 +312,8 @@ const Home: NextPage = () => {
                 height={96}
               />
             </div>
-            <div className="absolute bottom-40 right-8 md:bottom-36 md:right-40 lg:bottom-48 lg:right-1/4  rotate-12 fadeIn scale-50 md:scale-75 lg:scale-100">
+            <div className="fadeIn corn3">
+              {/* <div className="absolute bottom-40 right-8 md:bottom-36 md:right-40 lg:bottom-48 lg:right-1/4  rotate-12 fadeIn scale-50 md:scale-75 lg:scale-100"> */}
               <Image
                 src={"/images/corn.png"}
                 alt="corn"

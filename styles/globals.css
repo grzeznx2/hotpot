@@ -49,28 +49,13 @@ div.xx>div {
   transform: scale(1) !important;
 }
 
-
-
-.btn {
-  color: white;
-  width: 38rem !important;
-  height: 5.5rem !important;
-  border-radius: 1000px !important;
-  font-size: 2rem !important;
-  text-align: center !important;
-  background-color: #FF60D5 !important;
-}
-
-.btn:hover {
-  background-color: #FF9EE6 !important;
-}
-
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .xx button, .btn {
     width: 26rem !important;
     height: 5.2rem !important;
   }
 }
+
 
 @keyframes fadeIn {
   from {
@@ -106,6 +91,31 @@ div.xx>div {
   animation: upDown 2s ease-in-out infinite;
 }
 
+.rotateAnim {
+  animation: rotateAnim 2.5s infinite ease-in-out;
+}
+
+@keyframes rotateAnim {
+  10% {
+    transform: rotate(25deg);
+  }
+  20% {
+    transform: rotate(-20deg);
+  }
+  30% {
+    transform: rotate(15deg);
+  }
+  40% {
+    transform: rotate(-10deg);
+  }
+  55% {
+    transform: rotate(10deg);
+  }
+  70%, 100% {
+    transform: rotate(0deg);
+  }
+}
+
 .spinner {
   border: 16px solid #FF62D6;  
   border-top: 16px solid #FF9EE6;
@@ -118,5 +128,150 @@ div.xx>div {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.bokchoy3 {
+  transform: rotate(-15deg) scale(0.5);
+  position: absolute;
+  bottom: 10%;
+  left: 0;
+}
+
+.egg1 {
+  position: absolute;
+  transform: scale(0.5);
+  bottom: 10%;
+  left: 0;
+}
+
+.egg3 {
+  bottom: 3.5%;
+}
+
+.mushroom1, .cabbage, .corn3 {
+  position: absolute;
+  transform: scale(0.5);
+  bottom: 5%;
+  left: 66%;
+}
+
+.cabbage {
+  left: 75%
+}
+
+.ticket1 {
+  position: absolute;
+  transform: scale(0.5);
+  top: 15%;
+  left: -10%;
+}
+
+.meat1 {
+  position: absolute;
+  top: 10%;
+  left: 80%;
+}
+
+.naruto1 {
+  position: absolute;
+  transform: scale(0.5);
+  bottom: 20%;
+  left: 80%;
+}
+
+.naruto3 {
+  position: absolute;
+  transform: scale(0.5);
+  top: 30%;
+  left: 80%;
+}
+
+.shrimp3 {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: scale(0.5) rotate(180deg) translate(100%);
+}
+
+.ticket2 {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: scale(0.5) translateX(-100%);
+}
+
+@media screen and (min-width: 768px) {
+  .ticket2 {
+    top: 15%;
+    transform: scale(0.75) translateX(-75%);
+  }
+  .shrimp3 {
+    top: 15%;
+    transform: scale(0.75) rotate(180deg) translateX(75%);
+  }
+  .bokchoy3 {
+    transform: scale(0.75) rotate(-15deg);
+  }
+  .naruto3{
+    top: 20%;
+    left: 85%;
+  }
+  .egg1, .mushroom1, .cabbage,.corn3,  .naruto1, .ticket1, .naruto3 {
+    transform: scale(0.75);
+  }
+  .ticket1 {
+    left: 0%;
+  }
+}
+
+
+@media screen and (min-width: 1024px) {
+  .ticket2 {
+    transform: scale(1) translateX(-50%);
+  }
+  .shrimp3 {
+    transform: rotate(180deg) translateX(50%) scale(1);
+  }
+  .bokchoy3 {
+    transform: scale(1) rotate(-15deg);
+  }
+  .egg1, .mushroom1, .cabbage,.corn3,  .naruto1, .ticket1 {
+    transform: scale(1);
+  }
+  .egg1, .bokchoy3 {
+    left: 10%;
+  }
+  .ticket1 {
+    left: 10%;
+  }
+}
+
+@media screen and (max-height: 600px) and (min-width: 1024px){
+  .ticket2 {
+    top: 5%;
+    transform: scale(0.75) translateX(-75%);
+  }
+  .shrimp3 {
+    top: 5%;
+    transform: scale(0.75) rotate(180deg) translateX(75%);
+  }
+  .bokchoy3 {
+    transform: scale(0.75) rotate(-15deg);
+    left: 5%;
+    bottom: 5%;
+  }
+  .naruto1 {
+    left: 85%;
+  }
+  .naruto3 {
+    top: 45%;
+  }
+  .egg1, .mushroom1, .cabbage,.corn3,  .naruto1, .ticket1 {
+    transform: scale(0.75); 
+  }
+  .ticket1 {
+    transform: scale(0.75); 
+     top: 5%;
+  }
 }
 
