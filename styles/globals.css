@@ -162,7 +162,7 @@ body {
 .meat1 {
   position: absolute;
   top: 10%;
-  left: 82%;
+  left: 84%;
 }
 
 .naruto1 {
@@ -275,7 +275,7 @@ body {
   }
   .shrimp3 {
     top: 5%;
-    transform: scale(0.75) translateX(-50%);
+    transform: scale(0.75) translateX(-75%);
   }
 }
 
