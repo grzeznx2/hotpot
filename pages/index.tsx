@@ -77,11 +77,8 @@ const Home: NextPage = () => {
       }
     }
 
-    if (address) {
-      getWallets();
-    } else {
-      setCurrentWallet(null);
-    }
+    if (address) getWallets();
+    else setCurrentWallet(null);
   }, [address]);
 
   async function handleFollow() {
@@ -108,25 +105,18 @@ const Home: NextPage = () => {
   };
 
   const handleBlur = () => {
-    if (!validateEmail(email)) {
-      setEmailInvalid(true);
-    }
+    if (!validateEmail(email)) setEmailInvalid(true);
   };
 
   const handleEmailChange = (e: any) => {
     setEmail(e.target.value);
     if (!validateEmail(e.target.value)) setEmailInvalid(true);
-    else {
-      setEmailInvalid(false);
-    }
+    else setEmailInvalid(false);
   };
 
   const onCaptchaChange = (token: string | null) => {
-    if (token) {
-      setCaptchaVerified(true);
-    } else {
-      setCaptchaVerified(false);
-    }
+    if (token) setCaptchaVerified(true);
+    else setCaptchaVerified(false);
   };
 
   if (!mounted) return <></>;
