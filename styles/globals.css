@@ -162,7 +162,7 @@ body {
 .meat1 {
   position: absolute;
   top: 10%;
-  left: 80%;
+  left: 82%;
 }
 
 .naruto1 {
@@ -183,7 +183,7 @@ body {
   position: absolute;
   top: 15%;
   left: 50%;
-  transform: scale(0.5) rotate(180deg) translate(100%);
+  transform: scale(0.5) translateX(-50%);
 }
 
 .ticket2 {
@@ -200,7 +200,7 @@ body {
   }
   .shrimp3 {
     top: 15%;
-    transform: scale(0.75) rotate(180deg) translateX(75%);
+    transform: scale(0.75) translateX(-50%);
   }
   .bokchoy3 {
     transform: scale(0.75) rotate(-15deg);
@@ -223,7 +223,7 @@ body {
     transform: scale(1) translateX(-50%);
   }
   .shrimp3 {
-    transform: rotate(180deg) translateX(50%) scale(1);
+    transform: scale(1) translateX(-50%);
   }
   .bokchoy3 {
     transform: scale(1) rotate(-15deg);
@@ -246,7 +246,7 @@ body {
   }
   .shrimp3 {
     top: 5%;
-    transform: scale(0.75) rotate(180deg) translateX(75%);
+    transform: scale(0.75) translateX(-50%);
   }
   .bokchoy3 {
     transform: scale(0.75) rotate(-15deg);
@@ -275,7 +275,7 @@ body {
   }
   .shrimp3 {
     top: 5%;
-    transform: scale(0.75) rotate(180deg) translateX(75%);
+    transform: scale(0.75) translateX(-50%);
   }
 }
 
@@ -283,7 +283,7 @@ body {
   .shrimp3 {
     top: 15%;
     left: 50%;
-    transform: scale(0.5) rotate(180deg) translate(100%);
+    transform: scale(0.5) translateX(-100%);
   }
   .ticket2 {
     top: 20%;

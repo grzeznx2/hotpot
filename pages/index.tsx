@@ -329,7 +329,7 @@ const Home: NextPage = () => {
               </div>
               <div className="fadeIn shrimp3">
                 <Image
-                  src={"/images/shrimp.png"}
+                  src={"/images/shrimps.png"}
                   alt="shrimp"
                   width={179}
                   height={189}
