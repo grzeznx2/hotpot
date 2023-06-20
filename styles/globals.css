@@ -27,14 +27,6 @@ body {
   overflow: hidden;
 }
 
-/* div.xx {
-  width: 20rem;
-} */
-
-div.xx>div {
-  /* @apply ; */
-}
-
 .xx button {
   width: 38rem !important;
   height: 5.5rem !important;
@@ -47,13 +39,6 @@ div.xx>div {
 .xx button:hover {
   background-color: #FF9EE6 !important;
   transform: scale(1) !important;
-}
-
-@media (max-width: 768px) {
-  .xx button, .btn {
-    width: 26rem !important;
-    height: 5.2rem !important;
-  }
 }
 
 
@@ -123,6 +108,14 @@ div.xx>div {
   width: 120px;
   height: 120px;
   animation: spin 2s linear infinite;
+}
+
+.spinner.small {
+  width: 30px;
+  height: 30px;
+  border: 4px solid #FF62D6;  
+  border-top: 4px solid #FF9EE6;
+
 }
 
 @keyframes spin {
@@ -275,3 +268,52 @@ div.xx>div {
   }
 }
 
+@media screen and (max-height: 750px){
+  .ticket2 {
+    top: 5%;
+    transform: scale(0.75) translateX(-75%);
+  }
+  .shrimp3 {
+    top: 5%;
+    transform: scale(0.75) rotate(180deg) translateX(75%);
+  }
+}
+
+@media screen and (max-width: 768px){
+  .shrimp3 {
+    top: 15%;
+    left: 50%;
+    transform: scale(0.5) rotate(180deg) translate(100%);
+  }
+  .ticket2 {
+    top: 20%;
+  left: 50%;
+  transform: scale(0.5) translateX(-100%);
+  }
+}
+
+
+.email-input {
+  width: 38rem !important;
+  height: 5.5rem !important;
+  border-radius: 1000px !important;
+  font-size: 2rem !important;
+  text-align: center !important;
+  border: 3px solid #FF60D5;
+}
+
+.email-input:focus {
+  border: 3px solid #FF60D5;
+  outline: none;
+}
+
+.btn {
+  transition: all .2s ;
+}
+
+@media (max-width: 768px) {
+  .xx button, .btn, .email-input {
+    width: 26rem !important;
+    height: 5.2rem !important;
+  }
+}
