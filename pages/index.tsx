@@ -9,15 +9,7 @@ import Image from "next/image";
 import HotpotSVG from "../public/images/hotpot_text.svg";
 import TwitterSVG from "../public/images/twitter_svg.svg";
 import { db } from "../firebase/firebase";
-import {
-  addDoc,
-  collection,
-  doc,
-  getDocs,
-  query,
-  updateDoc,
-  where,
-} from "firebase/firestore";
+import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
 import ReCAPTCHA from "react-google-recaptcha";
 
 interface CurrentWallet {
@@ -129,8 +121,8 @@ const Home: NextPage = () => {
     }
   };
 
-  const onCaptchaChange = (value: boolean) => {
-    if (value) {
+  const onCaptchaChange = (token: string | null) => {
+    if (token) {
       setCaptchaVerified(true);
     } else {
       setCaptchaVerified(false);
@@ -163,7 +155,7 @@ const Home: NextPage = () => {
 
           <div className="z-20">
             <ReCAPTCHA
-              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_KEY}
+              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_KEY!}
               onChange={onCaptchaChange}
             />
           </div>
