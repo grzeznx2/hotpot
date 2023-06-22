@@ -81,6 +81,18 @@ const Home: NextPage = () => {
     else setCurrentWallet(null);
   }, [address]);
 
+  useEffect(() => {
+    if (!address) {
+      setCurrentWallet(null);
+      setSaveUserState("NOT_LOADING");
+      setCaptchaVerified(false);
+      setEmailSubmitted(false);
+      setIsFollowing(false);
+      setEmail("");
+      setEmailInvalid(true);
+    }
+  }, [address]);
+
   async function handleFollow() {
     setIsFollowing(true);
   }
